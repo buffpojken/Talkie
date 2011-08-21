@@ -5,7 +5,8 @@ class SettingsController < ApplicationController
   def index
     
   end
-
+  
+  # Update settings for the user, including avatar
   def create
     if @current_user.update_attributes(params[:user])
       flash[:notice] = "Settings update"

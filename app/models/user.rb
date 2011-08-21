@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :avatar
 
+  # Each user can have many sites active at the same time
   has_many :sites
 
 
