@@ -1,0 +1,89 @@
+
+<!-- Secondary navigation -->
+<nav id="secondary">
+	<ul>
+	</ul>
+</nav>
+
+<!-- The content -->
+<section id="content">
+	<h2>Settings</h2>
+	<%= form_tag settings_path, {:multipart => true} do %>
+
+	<div class="column left third">
+		
+		<% if @current_user.avatar.file? %>
+			<img src="<%= @current_user.avatar.url(:edit) %>" class="edit-avatar"/>
+			<center>
+				<a href="<%= remove_settings_path %>">Remove</a>
+			</center>
+		<% else %>
+			<img src="/avatar/missing.jpg" class="edit-avatar">		
+		<% end %>
+		<section class="first-child">
+			<label for="avatar">
+				Avatar
+			</label>
+			<div>
+				<input type="file" name="user[avatar]" />
+			</div>	
+		</section>
+		
+	</div>
+
+	<div class="column right twothird">
+			<section class="first-child">
+				<label for="username">
+					Username
+				</label>
+				<div>
+					<input id="username" name="user[login]" type="text" placeholder="<%= @current_user.login %>" value="<%= @current_user.login %>" class="required" />
+				</div>			
+			</section>
+			
+			<section>
+					<label for="email">
+						Email
+					</label>
+					<div>
+						<input id="email" name="user[email]" type="text" placeholder="<%= @current_user.email %>" value="<%= @current_user.email %>" class="required" />
+					</div>								
+			</section>
+			
+			<section>
+					<label for="email">
+						Password
+					</label>
+					<div>
+						<input id="email" name="user[password]" type="password" />
+					</div>								
+			</section>
+			
+			<section>
+					<label for="email">
+						Confirm password
+					</label>
+					<div>
+						<input id="email" name="user[password_confirmation]" type="password" />
+					</div>								
+			</section>
+			
+			
+			<section>
+				<p>
+			    <input type="submit" class="button primary submit" value="Submit" />
+			    <a href="/dashboard" class="button">Cancel</a>
+			  </p>
+			</section>
+			
+	</div>
+	
+	<% end %>
+
+
+</section>
+
+
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag 'settings' %>
+<% end %>

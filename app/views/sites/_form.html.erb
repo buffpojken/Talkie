@@ -1,0 +1,25 @@
+<%= form_tag sites_path, {:class => "validate"} do %>
+	<section class="first-child">
+		<label for="name">
+			Name
+		</label>
+		<div>
+			<input type="text" name="site[name]" placeholder="Name" class="required"/>
+		</div>
+	</section>
+
+	<section class="first-child">
+		<label for="name">
+			Host
+		</label>
+		<div>
+			<input type="text" name="site[host]" placeholder="http://example.com" class="required"/>
+		</div>
+	</section>
+	
+	<section>
+		<p>
+	    <input type="submit" class="button primary submit big" value="Create" />
+	  </p>
+	</section>			
+<% end %>

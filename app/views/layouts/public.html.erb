@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Admin Control Panel – Login</title>
+
+    <link rel="stylesheet" href="/assets/application.css" />
+
+    
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/ie.css" />
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>    
+    <div id="gradient">
+      <div id="stars">
+        <div id="container" class="logincontainer">
+					<%= yield %>
+          <footer id="copyright">2011, Talkie</footer>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+		<%= javascript_include_tag 'application' %>
+  </body>
+</html>

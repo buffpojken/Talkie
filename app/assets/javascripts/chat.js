@@ -1,0 +1,16 @@
+//= require jquery
+//= require libs/excanvas
+//= require libs/jquery.livesearch
+//= require libs/jquery.visualize
+//= require libs/jquery.datatables
+//= require libs/jquery.placeholder
+//= require libs/jquery.selectskin
+//= require libs/jquery.checkboxes
+//= require libs/jquery.wymeditor
+//= require libs/jquery.validate
+//= require libs/jquery.inputtags
+//= require libs/notifications
+//= require libs/template
+//= require libs/jquery.scrollTo-1.4.2-min
+//= require layout
+//= require client

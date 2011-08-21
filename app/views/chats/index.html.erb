@@ -1,0 +1,81 @@
+<nav id="secondary">
+  <ul>
+  	<% @chats.each do |chat| %>
+    	<li>
+				<a href="#<%= chat.subdomain %>">
+					<%= chat.name %>
+				</a>
+			</li>
+		<% end %>
+	</ul>
+</nav>
+
+<section id="content">
+	<% if @chats.empty? %>
+		<h2>No active chats</h2>
+		<p>
+			You have no active chats, try adding a site <a href="/sites">here</a>
+		</p>	
+	<% end %>
+	
+	<% @chats.each do |site| %>
+		<div class="tab chat-section" id="<%= site.subdomain %>">
+			<h2>
+				<%= site.name %>
+			</h2>			
+			<div class="column left third">
+				<ul>
+					<% site.users.each do |user| %>
+						<li class="<%= user['status'] %>">
+							<%= user['name'] %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>			
+			<div class="column right twothird">	
+				<div class="chat-view">
+					<ul id="chat">
+						<% site.messages.each do |message| %>
+						<li>
+							<span class="username"><%= message['name'] %></span>
+							<span class="date"><%= message['date'].localtime.strftime("%H: %M") %></span><br class="clear"/>
+							<p>
+								<%= message['message']%>
+							</p>
+							<br class="clear"/>
+						</li>							
+						<% end %>
+					</ul>						
+				</div>
+				<br />
+				<section class="defaults">
+						<input type="text" id="msg"/>
+				</section>
+		</div>
+	<% end %>
+</section>
+
+<% content_for :page_script do %>
+	window.info.name = "<%= @current_user.login %>";
+<% end %>
+
+<% content_for :script_files do %>
+	<script type="text/javascript" src="http://localhost:3001/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="/assets/chat.js"></script>		
+<% end %>
+
+<% content_for :stylesheets do %>
+	<%= stylesheet_link_tag 'chats'%>
+<% end %>
+
+<script type="text/html-template" id="msg-template">
+	<li>
+		<span class="username">${name}</span>
+		<span class="date">${time.getHours()}:${time.getMinutes()}</span><br class="clear"/>
+		<p>
+			${message}
+		</p>
+		<br class="clear"/>
+	</li>							
+</script>

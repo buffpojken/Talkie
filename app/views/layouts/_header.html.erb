@@ -1,0 +1,49 @@
+<header>
+
+  <!-- Logo -->
+  <h1 id="logo">Admin Control Panel</h1>
+
+  <!-- User info -->
+  <div id="userinfo">
+    <img src="<%= @current_user.avatar.url(:header) %>" alt="<%= @current_user.login %>" />
+    <div class="intro">
+      Welcome <a href="/settings"><%= @current_user.login %></a> (<a href="/logout">logout</a>)<br />
+      You have <a href="#">0 new messages</a>
+    </div>
+  </div>
+
+</header>
+<!-- The application "window" -->
+<div id="application">
+
+  <!-- Primary navigation -->
+  <nav id="primary">
+    <ul>
+      <li class="<%= mark_selected('dashboards') %>">
+        <a href="/dashboard">
+          <span class="icon dashboard"></span>
+          Dashboard
+        </a>
+      </li>      
+      <li class="<%= mark_selected('chats') %>">
+        <a href="/chats">
+          <span class="icon pencil"></span>
+          Chat
+        </a>
+      </li>
+      <!-- <li class="<%= mark_selected('statistics') %>">
+        <a href="/charts">
+          <span class="icon chart"></span>
+          Charts
+        </a>
+      </li>       -->
+      <li class="<%= mark_selected('sites') %>">
+        <a href="/sites">
+          <span class="icon modal"></span>
+          Sites
+        </a>
+      </li>
+    </ul>
+  
+    <!-- <input type="text" id="search" placeholder="Realtime search..." /> -->
+  </nav>

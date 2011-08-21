@@ -1,0 +1,15 @@
+// Place all the styles related to the chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#content .chat-section ul{list-style-type:none;padding:none;margin:0px;}
+#content .chat-section li{background-color:transparent;margin:3px 0px;background-repeat:no-repeat;background-position:2px 5px;padding:4px 0px 5px 30px;}
+#content .chat-section .online{background-image:url(/assets/icons/online.png);}
+#content .chat-section .idle{background-image:url(/assets/icons/idle.png);}
+#content .chat-section .urgent{background-image:url(/assets/icons/urgent.png);}
+.chat-view{height:300px;background-color:#fff;-moz-box-shadow:inset 0 0 10px rgba(0,0,0,0.5);-webkit-box-shadow:inset 0 0 10px rgba(0,0,0,0.5);box-shadow:inset 0 0 10px rgba(0,0,0,0.5);overflow:auto;}
+#content .chat-view ul{margin:0px;padding:10px 0px;list-style-type:none;}
+#content .chat-view li{margin:4px 0px 4px 10px;padding:0px;list-style-type:none;}
+#content .chat-view .username{font-weight:bold;float:left;margin:0px 10px 0px 0px;}
+#content .chat-view .date{font-style:italic;font-size:11px;float:left;margin:1px 0px 0px 0px;}
+#content .chat-view p{float:left;}

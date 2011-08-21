@@ -1,0 +1,90 @@
+<header>
+
+  <!-- Logo -->
+  <h1 id="logo">Admin Control Panel</h1>
+
+</header>
+
+<!-- The application "window" -->
+<div id="application">
+  
+ <nav id="secondary">
+    <ul>
+      <li class="current"><a href="#login">Login</a></li>
+      <li><a href="#signup">Sign up</a></li>
+      <li><a href="#forgot">Forgot password</a></li>
+    </ul>
+  </nav>
+
+  <!-- The content -->
+  <section id="content">
+		<div class="tab" id="login">
+    	<br /><br />
+    	<form action="/session" method="post" accept-charset="UTF-8">
+      	<section>
+        	<label for="username">Username</label>
+        	<div>
+          	<input type="text" name="login" placeholder="Username" class="required" />
+        	</div>
+      	</section>
+
+      	<section>
+        	<label for="password">Password</label>					
+        		<div>
+          	<input type="password" name="password" id="password" placeholder="Password" class="required" />
+          	<br /><br />
+						<input type="submit" value="Login" class="button primary" />
+          	<a href="#" class="button">Cancel</a>
+        	</div>
+      	</section>
+				<input name="utf8" type="hidden" value="✓">
+				<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+    	</form>
+		</div><!-- End of Login -->
+		<div class="tab" id="signup">
+			<br /><br />
+			<form accept-charset="UTF-8" action="/users" method="post" class="validate">
+      	<section>
+        	<label for="username">Username</label>
+        	<div>
+          	<input type="text" name="user[login]" placeholder="Username" class="required" />
+        	</div>
+      	</section>
+
+      	<section>
+        	<label for="username">Email</label>
+        	<div>
+          	<input type="text" name="user[email]" placeholder="Email" class="required" />
+        	</div>
+      	</section>
+
+      	<section>
+        	<label for="password">Password</label>					
+        	<div>
+          	<input type="password" name="user[password]" id="signup-password" placeholder="Password" class="required" />
+        	</div>
+      	</section>
+
+      	<section>
+        	<label for="password_confirmation">Confirm the password</label>					
+        	<div>
+          	<input type="password" name="user[password_confirmation]" id="signup-password_confirmation" placeholder="Password again?" class="required" />
+        	</div>
+      	</section>
+				
+				<section>
+					<div>
+          	<input type="submit" value="Sign up" class="button primary" />
+          	<a href="#" class="button">Cancel</a>
+					</div>
+				</section>
+				<input name="utf8" type="hidden" value="✓">
+				<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+			</form>
+		</div><!-- End of Signup -->
+		<div class="tab" id="forgot">
+			<br /><br />
+			Forgot.
+		</div>
+  </section>
+</div>

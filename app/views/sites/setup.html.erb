@@ -1,0 +1,50 @@
+
+
+
+<!-- The content -->
+<section id="content">
+	
+	<h2>Sites</h2>
+	
+	<div class="column left third">
+		<h3>Tips</h3>
+		<ul>
+			<li>
+				Paste the script just before the end of the body-tag to 
+				make the page load as fast as possible
+			</li>	
+			<br />
+			<li>
+				Make sure you paste the code exactly as shown, any differences will
+				make it impossible for us to load your chat correctly
+			</li>	
+			<br />
+			<li>
+				You can always reconfigure your site later on, changing hooks and 
+				rules from the <a href="<%= settings_site_path(@site) %>">settings page</a>
+			</li>	
+		</ul>	
+	</div>
+	
+	<div class="column right twothird">
+
+			<h1>1. Integrate with your site</h1>
+			<br />
+			<p>
+				In order to start using Talkie, just add a new site below, and then paste the generated 
+				code into your website. We'll automatically start everything and you'll be talking to your
+				customers in no time!
+			</p>
+			<pre>&lt;script type="text/javascript" src="http://<%= configatron.base.url %>/base.js?h=<%= @site.auth_hash %>"&gt;&lt;/script&gt;</pre>	
+			<div style="margin:-12px 0px 0px 0px;font-size:11px;cursor:pointer">Copy to clipboard</div>
+			<br /><br />
+
+			<div class="button-group">
+				<a href="<%= site_path(@site) %>" class="button primary">Okay, I'm done</a>
+				<a href="/help/integration/script-tag" class="button">I need help with this!</a>				
+			</div>
+		<br style="clear:both"/><br />
+	</div>
+
+
+</section>

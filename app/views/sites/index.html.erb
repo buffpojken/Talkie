@@ -1,0 +1,78 @@
+
+
+
+<!-- The content -->
+<section id="content">
+	
+	<h2>Sites</h2>
+	
+	<div class="column left third">
+		<strong>site</strong> <em>noun, verb</em>, sit-ed, sit-ing<br />
+		<em>noun</em>
+		<br /><br />
+		<ol>
+			<li>
+				the position or location of a town, building, etc., especially as to its environment: <em>the site of our summer cabin</em>.
+			</li>
+			<li>
+				the area or exact plot of ground on which anything is, has been, or is to be located: <em>the site of ancient Troy</em>.
+			</li>	
+			<li>
+				Computers. <em>Web site</em>.
+			</li>	
+		</ol>	
+	</div>
+	
+	<div class="column right twothird">
+		<% unless @sites.empty? %>
+		<table class="">
+	  	<thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Host</th>
+	        <th>Actions</th>
+	      </tr>
+	    </thead>
+			<tbody>
+				<% @sites.each do |site| %>
+				<tr>
+					<td>
+						<%= site.name %>
+					</td>
+					<td>
+						<%= site.host %>
+					</td>
+					<td>
+						<span class="button-group">
+	            <a href="<%= remove_site_path(site) %>" class="button icon remove danger">Remove</a>
+	          </span>	          
+					</td>	
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<br />
+		<h4>Add Site</h4>
+		<p>
+
+		</p>	
+		<%= render :partial => 'form' %>
+		
+		
+		<% else %>
+		
+			<h1>No sites yet?</h1>
+			<br />
+			<p>
+				In order to start using Talkie, just add a new site below, and then paste the generated 
+				code into your website. We'll automatically start everything and you'll be talking to your
+				customers in no time!
+			</p>
+			
+			<%= render :partial => 'form' %>
+
+		<% end %>
+	</div>
+
+
+</section>

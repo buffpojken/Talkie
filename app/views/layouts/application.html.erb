@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Talkie</title>
+
+		<%= stylesheet_link_tag 'application' %>
+		<% if content_for?(:stylesheets) %>
+			<%= yield :stylesheets %>
+		<% end %>
+
+    
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/ie.css" />
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>    
+    <div id="gradient">
+      <div id="stars">
+        	<div id="container">
+					<%= render :partial => 'layouts/header' %>
+						<%= yield %>
+						<br style="clear:both"/>
+					</div>
+          <footer id="copyright">2011, Talkie</footer>
+        </div><!-- End of #application in header -->
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+		<%= javascript_include_tag 'application' %>
+		<% if content_for?(:script_files) %>
+			<%= yield :script_files %>
+		<% end %>		
+		<% if content_for?(:page_script) %>
+			<script type="text/javascript">
+				window.info = {};
+				<%= yield :page_script %>
+			</script>
+		<% end %>
+  </body>
+</html>

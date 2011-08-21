@@ -1,0 +1,73 @@
+(function(window){
+	document.write('<script type="text/javascript" src="http://<%= configatron.base.node_url %>/socket.io/socket.io.js"></script>');
+	document.write('<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>');
+	document.write('<script type="text/javascript" src="http://<%= configatron.base.url %>/assets/libs/jquery.scrollTo-1.4.2-min.js"></script>');
+	setTimeout(function(){
+		_init();
+	}, 400);	
+	function _init(){
+		var username = '<%= params[:username] %>';
+		var socket = new io.connect("<%= @site.subdomain %>.<%= configatron.base.node_url %>?username=<%= params[:username] %>&h=<%= @site.auth_hash %>")		
+		var _gui = gui(socket, username);
+		addMsg._gui = _gui;
+		socket.on('message', addMsg);
+	}
+	function gui(socket, username){
+		var div = $("<div>").css({
+			position:'fixed', 
+			'text-align':'center', 
+			cursor:'pointer', 
+			width:'300px', 
+			bottom:'0px', 
+			right:'30px', 
+			height:'14px', 
+			'-moz-box-shadow': '0 0 5px #888', 
+			'-webkit-box-shadow': '0 0 5px #888', 
+			'box-shadow': '0 0 5px #888', 
+			padding:'4px', 
+			'font-family':'Helvetica', 
+			'font-size':'12px'
+		}).html($('<span>').addClass('title').html('Click to chat'));
+		var chat = $('<div>').css({
+			'height':'200px'
+		}).append($('<ul>').css({
+			height:'157px', 
+			'list-style-type':'none', 
+			padding:'0px', 
+			margin:'0px', 
+			overflow:'auto'
+		}));
+		div.append(chat);
+		var input = $('<input>').attr({
+			type:'text'
+		}).css({
+			width:'100%', 
+			padding:'5px'
+		}).bind('keyup', function(e){
+			if(e.which == 13){
+				var m = {message: $(this).val(),timestamp:new Date().getTime(),name: username}
+				socket.send(m.message);				
+				$(this).val("");
+				addMsg(m);				
+			}
+		})
+		chat.append(input);		
+		div.bind('click.expand', function(e){
+			var _t = $(this);
+			$(this).animate({height:'200'}).addClass('expanded').find('.title').html('Online');			
+			$(this).unbind('click');
+		});		
+		$("body").append(div);	
+		return div; 
+	}
+	function addMsg(msg){
+		if(typeof(msg) == 'string'){
+			msg = JSON.parse(msg);				
+		}
+		li = "";
+		li += "<li style='margin:2px 0px 2px 10px;border-bottom:1px solid #eee'><span style='font-weight:bold;float:left;margin:0px 10px 0px 0px;'>"+msg.name+"</span>";
+		li += "<span style='font-style:italic;font-size:11px;float:left;margin:1px 0px 0px 0px;'>"+ new Date(msg.timestamp).getHours()+":"+ new Date(msg.timestamp).getMinutes()+"</span><br style='clear:both' />"; 
+		li += "<p style='text-align:left; margin:3px 0px 0px 3px'>"+msg.message+"</p><br style='clear:both;height:0px' /></li>"
+		arguments.callee._gui.find('ul').append(li).scrollTo('li:last-child');		
+	}
+}).call(this);
