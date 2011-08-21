@@ -1,4 +1,6 @@
-
+#####	Author: Daniel Sundström	#####
+#####	Date: August 21, 2011 - Aug:08:49#####
+#####	License: MIT License		#####
 
 addMessage = (msg) ->
 	msg = JSON.parse(msg) if typeof(msg) == 'string'
